@@ -6,7 +6,7 @@
 /*   By: edecoste <edecoste@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 13:31:19 by edecoste          #+#    #+#             */
-/*   Updated: 2023/06/30 11:08:55 by edecoste         ###   ########.fr       */
+/*   Updated: 2023/06/30 16:24:15 by edecoste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	open_files(char **av, t_data *pipex)
 	pipex->outfile = open(av[4], O_TRUNC | O_CREAT | O_RDWR, 0000644);
 	if (pipex->outfile < 0)
 	{
-		ft_putstr_fd("Error: permission denied : \n", 2);
+		ft_putstr_fd("Error: permission denied : ", 2);
 		ft_putendl_fd(av[4], 2);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: edecoste <edecoste@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 13:24:37 by edecoste          #+#    #+#             */
-/*   Updated: 2023/06/30 11:08:55 by edecoste         ###   ########.fr       */
+/*   Updated: 2023/06/30 16:17:28 by edecoste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ static void	first_child(t_data *pipex, char **av, char **envp)
 			ft_putstr_fd("Error: command not found : ", 2);
 			ft_putendl_fd(av[2], 2);
 			child_free(pipex);
+			close_all(pipex);
 			exit(1);
 		}
 		close_all(pipex);
@@ -60,6 +61,7 @@ static void	first_child(t_data *pipex, char **av, char **envp)
 		{
 			ft_putstr_fd("Error: execve first child\n", 2);
 			child_free(pipex);
+			close_all(pipex);
 			exit(1);
 		}
 	}
@@ -80,6 +82,7 @@ static void	second_child(t_data *pipex, char **av, char **envp)
 			ft_putstr_fd("Error: command not found : ", 2);
 			ft_putendl_fd(av[3], 2);
 			child_free(pipex);
+			close_all(pipex);
 			exit(1);
 		}
 		close_all(pipex);
@@ -87,6 +90,7 @@ static void	second_child(t_data *pipex, char **av, char **envp)
 		{
 			ft_putstr_fd("Error: execve second child\n", 2);
 			child_free(pipex);
+			close_all(pipex);
 			exit(1);
 		}
 	}

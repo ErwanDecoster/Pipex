@@ -6,7 +6,7 @@
 /*   By: edecoste <edecoste@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 10:06:54 by edecoste          #+#    #+#             */
-/*   Updated: 2023/06/30 11:08:55 by edecoste         ###   ########.fr       */
+/*   Updated: 2023/06/30 16:17:41 by edecoste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ void	child_free(t_data *pipex)
 	}
 	if (pipex->cmd_paths)
 		free(pipex->cmd_paths);
+	i = 0;
 	while (pipex->args[i])
 	{
 		free(pipex->args[i]);
