@@ -6,7 +6,7 @@
 /*   By: edecoste <edecoste@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 13:31:19 by edecoste          #+#    #+#             */
-/*   Updated: 2023/06/30 16:24:15 by edecoste         ###   ########.fr       */
+/*   Updated: 2023/07/24 14:57:25 by edecoste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,13 @@
 
 char	*find_path(char **envp)
 {
-	while (envp && ft_strncmp("PATH=", *envp, 5))
+	while (envp && *envp)
+	{
+		if (!ft_strncmp("PATH=", *envp, 5))
+			return (*envp + 5);
 		envp++;
-	return (*envp + 5);
+	}
+	return (NULL);
 }
 
 void	open_files(char **av, t_data *pipex)
@@ -46,15 +50,19 @@ int	main(int ac, char **av, char **envp)
 
 	ft_bzero(&pipex, sizeof(t_data));
 	if (ac != 5)
-		return (ft_putstr_fd("Error: Invalid number of arguments\n", 2));
+		return (ft_putstr_fd("Error: Invalid number of arguments\n", 2), 1);
 	if (!envp || !envp[0] || !ft_strncmp("PATH=", *envp, 5))
 		return (ft_putstr_fd("Error: env not found\n", 2), 1);
 	pipex.paths = find_path(envp);
-	pipex.cmd_paths = ft_split(find_path(envp), ':');
+	if (pipex.paths)
+		pipex.cmd_paths = ft_split(pipex.paths, ':');
+	else 
+		pipex.cmd_paths = ft_split("null", ':');
 	pipex.is_pipe_open = pipe(pipex.pipe);
 	if (pipex.is_pipe_open < 0)
 		msg_error("Error: Pipe\n", &pipex);
 	open_files(av, &pipex);
 	childs(&pipex, av, envp);
+	// return (0);
 	return (parent_free(&pipex), 0);
 }

@@ -6,7 +6,7 @@
 #    By: edecoste <edecoste@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/15 13:46:33 by edecoste          #+#    #+#              #
-#    Updated: 2023/06/30 16:29:13 by edecoste         ###   ########.fr        #
+#    Updated: 2023/07/24 14:42:52 by edecoste         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = pipex
 
 CC = gcc
 
-FLAGS = -Werror -Wall -Wextra #-g3 -fsanitize=address
+FLAGS = -Werror -Wall -Wextra -g3 -fsanitize=address
 
 RM = rm -rf
 

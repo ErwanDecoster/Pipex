@@ -6,7 +6,7 @@
 /*   By: edecoste <edecoste@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 13:24:37 by edecoste          #+#    #+#             */
-/*   Updated: 2023/06/30 16:17:28 by edecoste         ###   ########.fr       */
+/*   Updated: 2023/07/24 14:58:44 by edecoste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ static void	close_all(t_data *pipex)
 	close(pipex->outfile);
 }
 
+#include <stdio.h>
+
 static char	*get_cmd(char **paths, char *cmd)
 {
 	char	*tmp;
@@ -27,7 +29,7 @@ static char	*get_cmd(char **paths, char *cmd)
 
 	if (ft_strchr(cmd, '/') && !access(cmd, X_OK))
 		return (cmd);
-	while (*paths)
+	while (*paths && **paths)
 	{
 		tmp = ft_strjoin(*paths, "/");
 		res = ft_strjoin(tmp, cmd);
