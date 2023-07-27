@@ -6,7 +6,7 @@
 /*   By: edecoste <edecoste@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 13:31:19 by edecoste          #+#    #+#             */
-/*   Updated: 2023/07/24 14:57:25 by edecoste         ###   ########.fr       */
+/*   Updated: 2023/07/27 11:03:36 by edecoste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,5 @@ int	main(int ac, char **av, char **envp)
 		msg_error("Error: Pipe\n", &pipex);
 	open_files(av, &pipex);
 	childs(&pipex, av, envp);
-	// return (0);
 	return (parent_free(&pipex), 0);
 }

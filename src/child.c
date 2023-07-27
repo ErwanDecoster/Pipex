@@ -6,7 +6,7 @@
 /*   By: edecoste <edecoste@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 13:24:37 by edecoste          #+#    #+#             */
-/*   Updated: 2023/07/24 14:58:44 by edecoste         ###   ########.fr       */
+/*   Updated: 2023/07/27 11:54:13 by edecoste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@ static void	close_all(t_data *pipex)
 	close(pipex->infile);
 	close(pipex->outfile);
 }
-
-#include <stdio.h>
 
 static char	*get_cmd(char **paths, char *cmd)
 {
